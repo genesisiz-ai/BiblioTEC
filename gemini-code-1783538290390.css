@@ -1,6 +1,7 @@
 /* ==========================================
-   BIBLIOTECA DIGITAL TEC - ESTILO GENERAL
-   Diseño por: Dayana (Estudiante 2)
+   BIBLIOTECA DIGITAL TEC - ESTILO GENERAL UNIFICADO
+   Diseño base por: Dayana (Estudiante 2)
+   Integración: Grid y Tarjetas de Revistas
    ========================================== */
 
 /* 1. VARIABLES GLOBALES (Paleta institucional, fuentes y espaciados) */
@@ -21,14 +22,16 @@
     --color-pdf: #ef4444;            /* Rojo PDF */
     --color-video: #22c55e;          /* Verde para reproducción/video */
 
-    /* Tipografía y Espaciados */
+    /* Tipografía, Efectos y Espaciados */
     --fuente-principal: 'Poppins', 'Inter', system-ui, sans-serif;
     --border-radius: 12px;           /* Bordes redondeados modernos */
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;     /* Animación para efectos hover */
 }
 
-/* 2. RESETS GENERALES */
+/* 2. RESETS GENERALES Y ESTRUCTURA BASE */
 * {
     margin: 0;
     padding: 0;
@@ -40,6 +43,7 @@ body {
     background-color: var(--bg-principal);
     color: var(--texto-oscuro);
     line-height: 1.6;
+    padding: 20px;
 }
 
 /* Contenedor global para centrar el contenido */
@@ -48,6 +52,23 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 0;
+}
+
+/* Header de la página */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: var(--color-primario);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: var(--texto-mutado);
+    font-size: 1.1rem;
 }
 
 /* 3. TIPOGRAFÍA REUTILIZABLE */
@@ -62,13 +83,13 @@ p {
     margin-bottom: 1rem;
 }
 
-/* 4. COMPONENTES: BOTONES GENERALES */
+/* 4. COMPONENTES: BOTONES GENERALES e INTERACTIVOS */
 /* Botón Base */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* Espacio para iconos si usan FontAwesome */
+    gap: 8px; /* Espacio para iconos de Google Icons o FontAwesome */
     padding: 10px 20px;
     font-family: var(--fuente-principal);
     font-size: 0.95rem;
@@ -78,12 +99,16 @@ p {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+    transition: var(--transition);
 }
 
 /* Variaciones de Botones */
-.btn-primary {
+.btn-primary, .btn-preview {
     background-color: var(--color-secundario);
     color: white;
+}
+.btn-primary:hover, .btn-preview:hover {
+    background-color: var(--color-primario);
 }
 
 .btn-outline {
@@ -91,24 +116,135 @@ p {
     border: 2px solid var(--color-secundario);
     color: var(--color-secundario);
 }
+.btn-outline:hover {
+    background-color: var(--color-secundario);
+    color: white;
+}
 
-/* Botones específicos solicitados por el flujo */
+/* Botones específicos del flujo de revistas */
 .btn-genially {
     background-color: var(--color-genially);
     color: white;
+}
+.btn-genially:hover {
+    background-color: #e03f5c;
 }
 
 .btn-pdf {
     background-color: var(--color-pdf);
     color: white;
 }
+.btn-pdf:hover {
+    background-color: #dc2626;
+}
 
 .btn-video {
     background-color: var(--color-video);
     color: white;
 }
+.btn-video:hover {
+    background-color: #16a34a;
+}
 
-/* 5. DISEÑO DE ELEMENTOS COMUNES */
+/* Ajuste global de dimensiones para iconos dentro de los botones */
+.btn .material-icons {
+    font-size: 18px;
+}
+
+/* 5. GRID RESPONSIVO Y DISEÑO DE TARJETAS (REVISTAS) */
+.magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo de la Card */
+.card {
+    background: var(--bg-tarjetas);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Contenedor de Imagen y QR */
+.card-header {
+    position: relative;
+    height: 220px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* QR superpuesto discretamente */
+.qr-code {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 60px;
+    height: 60px;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.qr-code:hover {
+    transform: scale(1.8);
+    transform-origin: top right;
+    z-index: 10;
+}
+
+/* Cuerpo interno de la Card */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--color-primario);
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: var(--texto-mutado);
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Distribuye el espacio de manera simétrica */
+}
+
+/* Grupo de botones de acción de las tarjetas */
+.btn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.btn-full {
+    grid-column: span 2;
+}
+
+/* 6. DISEÑO DE ELEMENTOS ADICIONALES COMUNES */
 
 /* Buscador y Filtros */
 .search-filter-section {
@@ -126,6 +262,11 @@ p {
     border: 2px solid #e2e8f0;
     border-radius: var(--border-radius);
     outline: none;
+    transition: var(--transition);
+}
+
+.search-box:focus {
+    border-color: var(--color-secundario);
 }
 
 /* Footer Institucional */

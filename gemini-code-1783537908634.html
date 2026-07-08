@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital TEC - Segundo Básico</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* --- VARIABLES DE DISEÑO (Fácil de adaptar a tus estilos generales) --- */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00b4d8;
+            --dark-color: #2b2d42;
+            --light-color: #f8f9fa;
+            --text-muted: #6c757d;
+            --bg-card: #ffffff;
+            --radius: 12px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- GRID RESPONSIVO PARA LAS TARJETAS --- */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- ESTILO DE LA CARD --- */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Contenedor de Imagen y QR */
+        .card-header {
+            position: relative;
+            height: 220px;
+            background: #e9ecef;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* QR superpuesto discretamente */
+        .qr-code {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 60px;
+            height: 60px;
+            background: white;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .qr-code:hover {
+            transform: scale(1.8);
+            transform-origin: top right;
+            z-index: 10;
+        }
+
+        /* Cuerpo de la Card */
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1; /* Empuja los botones hacia abajo para mantener simetría */
+        }
+
+        /* --- BOTONES --- */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* El botón de vista previa ocupa todo el ancho arriba */
+        .btn-full {
+            grid-column: span 2;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        /* Variaciones de botones por función */
+        .btn-preview {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-preview:hover { background-color: #004085; }
+
+        .btn-genially {
+            background-color: #e4a1ff;
+            color: #4a0072;
+        }
+        .btn-genially:hover { background-color: #d17fff; }
+
+        .btn-pdf {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-pdf:hover { background-color: #bd2130; }
+
+        .btn-video {
+            background-color: #ffc107;
+            color: #212529;
+            grid-column: span 2; /* Para equilibrar el diseño inferior */
+        }
+        .btn-video:hover { background-color: #e0a800; }
+
+        /* Ajuste de iconos */
+        .btn .material-icons {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Biblioteca Digital TEC</h1>
+        <p>Revistas Digitales - Segundo Básico</p>
+    </header>
+
+    <main class="magazine-grid" id="grid-revistas">
+        </main>
+
+    <script>
+        // Simulando la Base de Datos de las revistas de Segundo Básico
+        const revistas = [
+            {
+                titulo: "Ciencias Naturales N° 1",
+                descripcion: "Explorando los ecosistemas y el impacto del cambio climático en nuestra región. Incluye actividades interactivas.",
+                imagen: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=400", // Imagen de muestra
+                qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://genially.com", // QR dinámico de muestra
+                urlGenially: "#",
+                urlPdf: "#",
+                urlVideo: "#"
+            },
+            {
+                titulo: "Historia y Ciencias Sociales",
+                descripcion: "Un viaje a través de las civilizaciones antiguas y sus legados culturales más importantes para la humanidad.",
+                imagen: "https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&q=80&w=400",
+                qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://genially.com",
+                urlGenially: "#",
+                urlPdf: "#",
+                urlVideo: "#"
+            },
+            {
+                titulo: "Tecnología e Innovación",
+                descripcion: "Conceptos básicos de programación en bloques, robótica escolar y ciudadanía digital para el siglo XXI.",
+                imagen: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
+                qr: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://genially.com",
+                urlGenially: "#",
+                urlPdf: "#",
+                urlVideo: "#"
+            }
+        ];
+
+        // Función para renderizar las Cards en el HTML
+        function cargarRevistas() {
+            const grid = document.getElementById('grid-revistas');
+            grid.innerHTML = ''; // Limpiar contenedor
+
+            revistas.forEach(revista => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <img src="${revista.imagen}" alt="${revista.titulo}" class="card-img" loading="lazy">
+                        <img src="${revista.qr}" alt="Código QR" class="qr-code" title="Agranda el QR pasando el mouse">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">${revista.titulo}</h2>
+                        <p class="card-description">${revista.descripcion}</p>
+                        
+                        <div class="btn-group">
+                            <a href="${revista.urlGenially}" class="btn btn-preview btn-full">
+                                <span class="material-icons">visibility</span> Vista Previa
+                            </a>
+                            <a href="${revista.urlGenially}" class="btn btn-genially" target="_blank">
+                                <span class="material-icons">flash_on</span> Ver Genially
+                            </a>
+                            <a href="${revista.urlPdf}" class="btn btn-pdf" download>
+                                <span class="material-icons">picture_as_pdf</span> PDF
+                            </a>
+                            <a href="${revista.urlVideo}" class="btn btn-video" target="_blank">
+                                <span class="material-icons">play_circle_filled</span> Ver Video
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarRevistas);
+    </script>
+</body>
+</html>

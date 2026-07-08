@@ -1,0 +1,143 @@
+/* ==========================================
+   BIBLIOTECA DIGITAL TEC - ESTILO GENERAL
+   Diseño por: Dayana (Estudiante 2)
+   ========================================== */
+
+/* 1. VARIABLES GLOBALES (Paleta institucional, fuentes y espaciados) */
+:root {
+    /* Colores Principales */
+    --color-primario: #0f172a;       /* Azul marino oscuro (Sofisticado/Tecnológico) */
+    --color-secundario: #0284c7;     /* Azul institucional / Cyan */
+    --color-acento: #0ea5e9;         /* Celeste brillante para hovers y enlaces */
+    
+    /* Colores de Fondo y Texto */
+    --bg-principal: #f8fafc;         /* Gris casi blanco para el fondo general */
+    --bg-tarjetas: #ffffff;          /* Blanco puro para las secciones y cards */
+    --texto-oscuro: #1e293b;         /* Gris oscuro para máxima legibilidad */
+    --texto-mutado: #64748b;         /* Gris medio para descripciones secundarias */
+    
+    /* Colores de Estado (Para botones de acción) */
+    --color-genially: #ff4a6b;       /* Color corporativo Genially */
+    --color-pdf: #ef4444;            /* Rojo PDF */
+    --color-video: #22c55e;          /* Verde para reproducción/video */
+
+    /* Tipografía y Espaciados */
+    --fuente-principal: 'Poppins', 'Inter', system-ui, sans-serif;
+    --border-radius: 12px;           /* Bordes redondeados modernos */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+/* 2. RESETS GENERALES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--bg-principal);
+    color: var(--texto-oscuro);
+    line-height: 1.6;
+}
+
+/* Contenedor global para centrar el contenido */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* 3. TIPOGRAFÍA REUTILIZABLE */
+h1, h2, h3, h4 {
+    color: var(--color-primario);
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+p {
+    color: var(--texto-mutado);
+    margin-bottom: 1rem;
+}
+
+/* 4. COMPONENTES: BOTONES GENERALES */
+/* Botón Base */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espacio para iconos si usan FontAwesome */
+    padding: 10px 20px;
+    font-family: var(--fuente-principal);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Variaciones de Botones */
+.btn-primary {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-secundario);
+    color: var(--color-secundario);
+}
+
+/* Botones específicos solicitados por el flujo */
+.btn-genially {
+    background-color: var(--color-genially);
+    color: white;
+}
+
+.btn-pdf {
+    background-color: var(--color-pdf);
+    color: white;
+}
+
+.btn-video {
+    background-color: var(--color-video);
+    color: white;
+}
+
+/* 5. DISEÑO DE ELEMENTOS COMUNES */
+
+/* Buscador y Filtros */
+.search-filter-section {
+    background-color: var(--bg-tarjetas);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    outline: none;
+}
+
+/* Footer Institucional */
+footer {
+    background-color: var(--color-primario);
+    color: #f1f5f9;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+footer p {
+    color: #cbd5e1;
+    margin-bottom: 5px;
+}

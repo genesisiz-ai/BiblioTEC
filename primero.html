@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca Digital TEC - Primero Básico</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#f4f7fb;color:#333}
+header{background:linear-gradient(135deg,#005bea,#00c6fb);color:#fff;text-align:center;padding:40px 20px}
+.container{width:90%;max-width:1300px;margin:auto;padding:40px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.1);transition:.3s}
+.card:hover{transform:translateY(-8px)}
+.card img{width:100%;height:220px;object-fit:cover}
+.info{padding:20px}
+.info h2{color:#005bea;margin-bottom:10px}
+.info p{margin-bottom:20px}
+.botones{display:grid;gap:10px}
+.botones button{border:none;padding:12px;border-radius:8px;color:#fff;font-weight:600;cursor:pointer}
+.preview{background:#6c757d}.genially{background:#005bea}.pdf{background:#28a745}.video{background:#dc3545}
+.qr{text-align:center;margin-top:20px}.qr img{width:120px;height:120px}
+footer{text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<header><h1>Biblioteca Digital TEC</h1><p>Revistas Digitales - Primero Básico</p></header>
+<div class="container"><div class="cards">
+<div class="card">
+<img src="imagenes/revista1.jpg" alt="Revista 1">
+<div class="info">
+<h2>Revista 1</h2>
+<p>Introducción a los contenidos desarrollados durante el primer bimestre.</p>
+<div class="botones">
+<button class="preview" onclick="vistaPrevia('imagenes/revista1.jpg')">Vista previa</button>
+<button class="genially" onclick="window.open('https://genially.com','_blank')">Ver Genially</button>
+<button class="pdf" onclick="window.open('pdf/revista1.pdf','_blank')">Descargar PDF</button>
+<button class="video" onclick="window.open('https://youtube.com','_blank')">Ver Video</button>
+</div>
+<div class="qr"><img src="imagenes/qr1.png" alt="QR"></div>
+</div></div>
+</div></div>
+<footer>Biblioteca Digital TEC © 2026</footer>
+<script>
+function vistaPrevia(img){
+let w=window.open("","","width=700,height=800");
+w.document.write('<body style="margin:0;display:flex;justify-content:center;align-items:center;background:#222"><img style="max-width:95%;max-height:95vh" src="'+img+'"></body>');
+}
+</script>
+</body></html>

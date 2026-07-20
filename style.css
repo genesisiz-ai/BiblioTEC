@@ -1,34 +1,29 @@
-/* ==========================================
+/* ====================================================
    BIBLIOTECA DIGITAL TEC - ESTILO GENERAL UNIFICADO
-   Diseño base por: Dayana (Estudiante 2)
-   Integración: Grid y Tarjetas de Revistas
-   ========================================== */
+   ==================================================== */
 
-/* 1. VARIABLES GLOBALES (Paleta institucional, fuentes y espaciados) */
+/* 1. VARIABLES GLOBALES */
 :root {
-    /* Colores Principales */
-    --color-primario: #0f172a;       /* Azul marino oscuro (Sofisticado/Tecnológico) */
-    --color-secundario: #0284c7;     /* Azul institucional / Cyan */
-    --color-acento: #0ea5e9;         /* Celeste brillante para hovers y enlaces */
+    --color-primario: #0f172a;       /* Azul marino oscuro */
+    --color-secundario: #0284c7;     /* Azul institucional */
+    --color-acento: #0ea5e9;         /* Celeste brillante */
     
-    /* Colores de Fondo y Texto */
-    --bg-principal: #f8fafc;         /* Gris casi blanco para el fondo general */
-    --bg-tarjetas: #ffffff;          /* Blanco puro para las secciones y cards */
-    --texto-oscuro: #1e293b;         /* Gris oscuro para máxima legibilidad */
-    --texto-mutado: #64748b;         /* Gris medio para descripciones secundarias */
+    --bg-principal: #f8fafc;         /* Gris casi blanco */
+    --bg-tarjetas: #ffffff;          /* Blanco puro */
+    --texto-oscuro: #1e293b;         /* Gris oscuro */
+    --texto-mutado: #64748b;         /* Gris medio */
     
-    /* Colores de Estado (Para botones de acción) */
-    --color-genially: #ff4a6b;       /* Color corporativo Genially */
-    --color-pdf: #ef4444;            /* Rojo PDF */
-    --color-video: #22c55e;          /* Verde para reproducción/video */
+    --color-preview: #6c757d;
+    --color-genially: #ff4a6b;       /* Rosa Genially / Acento secundario */
+    --color-pdf: #ef4444;
+    --color-video: #22c55e;
 
-    /* Tipografía, Efectos y Espaciados */
-    --fuente-principal: 'Poppins', 'Inter', system-ui, sans-serif;
-    --border-radius: 12px;           /* Bordes redondeados modernos */
+    --fuente-principal: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+    --border-radius: 12px;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-    --transition: all 0.3s ease;     /* Animación para efectos hover */
+    --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
 }
 
 /* 2. RESETS GENERALES Y ESTRUCTURA BASE */
@@ -38,40 +33,35 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--fuente-principal);
     background-color: var(--bg-principal);
     color: var(--texto-oscuro);
     line-height: 1.6;
-    padding: 20px;
 }
 
-/* Contenedor global para centrar el contenido */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 40px 0;
 }
 
-/* Header de la página */
-header {
+/* Top Banner Promocional/Informativo */
+.top-banner {
+    background: #0066cc;
+    color: #ffffff;
     text-align: center;
-    margin-bottom: 40px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
-header h1 {
-    color: var(--color-primario);
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-header p {
-    color: var(--texto-mutado);
-    font-size: 1.1rem;
-}
-
-/* 3. TIPOGRAFÍA REUTILIZABLE */
+/* 3. TIPOGRAFÍA Y TEXTOS */
 h1, h2, h3, h4 {
     color: var(--color-primario);
     font-weight: 700;
@@ -83,14 +73,135 @@ p {
     margin-bottom: 1rem;
 }
 
-/* 4. COMPONENTES: BOTONES GENERALES e INTERACTIVOS */
-/* Botón Base */
+.text-center {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-subtitle {
+    display: block;
+    color: var(--color-secundario);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* 4. HEADER Y NAVEGACIÓN STICKY */
+.main-header {
+    background-color: var(--color-primario);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    padding: 15px 0;
+}
+
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-header .logo {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.main-header .logo-accent {
+    color: var(--color-acento);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 5. HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+                url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da") center/cover no-repeat;
+    color: #ffffff;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-tag {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* 6. BOTONES */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* Espacio para iconos de Google Icons o FontAwesome */
-    padding: 10px 20px;
+    gap: 8px;
+    padding: 12px 24px;
     font-family: var(--fuente-principal);
     font-size: 0.95rem;
     font-weight: 600;
@@ -98,187 +209,292 @@ p {
     border-radius: var(--border-radius);
     cursor: pointer;
     text-decoration: none;
-    text-align: center;
     transition: var(--transition);
 }
 
-/* Variaciones de Botones */
-.btn-primary, .btn-preview {
+.btn-primary {
     background-color: var(--color-secundario);
-    color: white;
-}
-.btn-primary:hover, .btn-preview:hover {
-    background-color: var(--color-primario);
+    color: #ffffff;
 }
 
-.btn-outline {
-    background-color: transparent;
-    border: 2px solid var(--color-secundario);
-    color: var(--color-secundario);
-}
-.btn-outline:hover {
-    background-color: var(--color-secundario);
-    color: white;
+.btn-primary:hover {
+    background-color: var(--color-acento);
 }
 
-/* Botones específicos del flujo de revistas */
-.btn-genially {
+.btn-secondary {
     background-color: var(--color-genially);
-    color: white;
+    color: #ffffff;
 }
-.btn-genially:hover {
+
+.btn-secondary:hover {
     background-color: #e03f5c;
 }
 
-.btn-pdf {
-    background-color: var(--color-pdf);
-    color: white;
-}
-.btn-pdf:hover {
-    background-color: #dc2626;
+.btn-outline {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.btn-video {
-    background-color: var(--color-video);
-    color: white;
-}
-.btn-video:hover {
-    background-color: #16a34a;
-}
-
-/* Ajuste global de dimensiones para iconos dentro de los botones */
-.btn .material-icons {
-    font-size: 18px;
-}
-
-/* 5. GRID RESPONSIVO Y DISEÑO DE TARJETAS (REVISTAS) */
-.magazine-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Estilo de la Card */
-.card {
-    background: var(--bg-tarjetas);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Contenedor de Imagen y QR */
-.card-header {
-    position: relative;
-    height: 220px;
-    background: #e2e8f0;
-    overflow: hidden;
-}
-
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* QR superpuesto discretamente */
-.qr-code {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 60px;
-    height: 60px;
-    background: white;
-    padding: 5px;
-    border-radius: 8px;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.qr-code:hover {
-    transform: scale(1.8);
-    transform-origin: top right;
-    z-index: 10;
-}
-
-/* Cuerpo interno de la Card */
-.card-body {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.card-title {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+.btn-outline:hover {
+    background: #ffffff;
     color: var(--color-primario);
 }
 
-.card-description {
-    font-size: 0.95rem;
-    color: var(--texto-mutado);
-    line-height: 1.5;
-    margin-bottom: 20px;
-    flex-grow: 1; /* Distribuye el espacio de manera simétrica */
+.btn-white {
+    background-color: #ffffff;
+    color: var(--color-secundario);
 }
 
-/* Grupo de botones de acción de las tarjetas */
-.btn-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+.btn-white:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 1.05rem;
 }
 
 .btn-full {
-    grid-column: span 2;
+    width: 100%;
 }
 
-/* 6. DISEÑO DE ELEMENTOS ADICIONALES COMUNES */
+/* 7. GRIDS Y LAYOUTS */
+.grid-2-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    align-items: center;
+}
 
-/* Buscador y Filtros */
-.search-filter-section {
+.grid-3-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.grid-4-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+/* 8. TARJETAS DE GRADO */
+.grades-section {
+    padding: 80px 0;
+}
+
+.grade-card {
     background-color: var(--bg-tarjetas);
-    padding: 20px;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 5px solid transparent;
+}
+
+.grade-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.border-primero { border-top-color: var(--color-secundario); }
+.border-segundo { border-top-color: var(--color-genially); }
+
+.grade-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.bg-primero { background-color: var(--color-secundario); }
+.bg-segundo { background-color: var(--color-genially); }
+
+/* 9. BANNER INFORMATIVO */
+.info-banner {
+    background: linear-gradient(90deg, var(--color-secundario), var(--color-acento));
+    color: #ffffff;
+    padding: 40px 20px;
+}
+
+.banner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.banner-text h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.banner-text p {
+    color: #e0f2fe;
+    margin-bottom: 0;
+}
+
+/* 10. PRESENTACIÓN */
+.presentation {
+    padding: 80px 0;
+}
+
+.abstract-card {
+    background: linear-gradient(135deg, #38bdf8, #0369a1);
+    width: 100%;
+    max-width: 400px;
+    height: 280px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto;
+}
+
+.circle-decor {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.abstract-content {
+    color: #ffffff;
+    z-index: 2;
+}
+
+.abstract-content h3 { color: #ffffff; }
+.abstract-content p { color: #e0f2fe; margin-bottom: 0; }
+
+/* 11. OBJETIVOS */
+.objectives-section {
+    background-color: #f1f5f9;
+    padding: 80px 0;
+}
+
+.objective-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
-    margin-bottom: 30px;
-}
-
-.search-box {
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: var(--border-radius);
-    outline: none;
+    text-align: center;
     transition: var(--transition);
 }
 
-.search-box:focus {
-    border-color: var(--color-secundario);
+.objective-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
 }
 
-/* Footer Institucional */
-footer {
+.obj-icon {
+    color: var(--color-secundario);
+    margin-bottom: 15px;
+}
+
+.obj-icon .material-icons {
+    font-size: 40px;
+}
+
+/* 12. ESTADÍSTICAS */
+.stats-section {
     background-color: var(--color-primario);
-    color: #f1f5f9;
+    color: #ffffff;
+    padding: 60px 0;
     text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
 }
 
-footer p {
-    color: #cbd5e1;
-    margin-bottom: 5px;
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-acento);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* 13. FOOTER */
+.main-footer {
+    background-color: #0b0f19;
+    color: #94a3b8;
+    padding: 60px 0 20px;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.footer-brand h3, .footer-links h4, .footer-contact h4 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 10px; }
+
+.footer-links ul li a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links ul li a:hover {
+    color: var(--color-acento);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.85rem;
+}
+
+/* 14. RESPONSIVO */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .hero h1 { font-size: 2.2rem; }
+    .banner-container {
+        text-align: center;
+        justify-content: center;
+    }
 }

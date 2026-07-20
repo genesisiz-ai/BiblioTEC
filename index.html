@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital TEC</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#f4f4f4;
+            color:#333;
+        }
+
+        .hero{
+            background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+            url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da");
+            background-size:cover;
+            background-position:center;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            color:white;
+            padding:20px;
+        }
+
+        .contenido{
+            max-width:700px;
+        }
+
+        h1{
+            font-size:50px;
+            margin-bottom:20px;
+        }
+
+        .banner{
+            background:#0066cc;
+            color:white;
+            padding:15px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .objetivos{
+            padding:50px;
+            text-align:center;
+        }
+
+        .objetivos ul{
+            list-style:none;
+            margin-top:20px;
+        }
+
+        .objetivos li{
+            margin:10px;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:25px;
+            padding:15px 30px;
+            background:#ff9800;
+            color:white;
+            text-decoration:none;
+            border-radius:8px;
+            font-weight:bold;
+        }
+
+        .btn:hover{
+            background:#e68900;
+        }
+
+        .estadisticas{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            padding:40px;
+            background:white;
+            flex-wrap:wrap;
+        }
+
+        .card{
+            background:#0066cc;
+            color:white;
+            padding:20px;
+            border-radius:10px;
+            width:180px;
+            text-align:center;
+        }
+
+        .card h2{
+            font-size:35px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner">
+    📚 Bienvenido a la Biblioteca Digital TEC
+</div>
+
+<section class="hero">
+    <div class="contenido">
+        <h1>Biblioteca Digital TEC</h1>
+
+        <p>
+            Explora una gran colección de libros, recursos educativos y
+            material de aprendizaje disponible para todos los estudiantes.
+        </p>
+
+        <a href="#" class="btn">Explorar Biblioteca</a>
+    </div>
+</section>
+
+<section class="objetivos">
+    <h2>Objetivos</h2>
+
+    <ul>
+        <li>📖 Facilitar el acceso a libros digitales.</li>
+        <li>🎓 Apoyar el aprendizaje de los estudiantes.</li>
+        <li>💻 Promover el uso de recursos tecnológicos.</li>
+    </ul>
+</section>
+
+<section class="estadisticas">
+
+    <div class="card">
+        <h2>500+</h2>
+        <p>Libros</p>
+    </div>
+
+    <div class="card">
+        <h2>120</h2>
+        <p>Autores</p>
+    </div>
+
+    <div class="card">
+        <h2>50</h2>
+        <p>Categorías</p>
+    </div>
+
+    <div class="card">
+        <h2>1000+</h2>
+        <p>Usuarios</p>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* ==========================================
+   BIBLIOTECA DIGITAL TEC - DISEÑO RESPONSIVO
+   Adaptación para Laptops, Tablets y Celulares
+   ========================================== */
+
+/* --- Laptops y Pantallas Medianas (hasta 1024px) --- */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 95%;
+    }
+
+    /* Reducimos ligeramente el gap y el tamaño mínimo de la tarjeta */
+    .magazine-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* --- Tablets (hasta 768px) --- */
+@media screen and (max-width: 768px) {
+    header {
+        margin-bottom: 30px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .card-header {
+        height: 200px; /* Reducimos la altura de la imagen */
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    /* Ajuste del buscador */
+    .search-filter-section {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+
+    .search-box {
+        padding: 10px 15px;
+    }
+
+    footer {
+        padding: 30px 15px;
+    }
+}
+
+/* --- Celulares / Móviles (hasta 480px) --- */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px; /* Menos espacio muerto en los bordes */
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Forzamos 1 sola columna en móviles */
+    .magazine-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    /* Los botones pasan de estar en 2 columnas a 1 sola columna */
+    .btn-group {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-full {
+        grid-column: span 1;
+    }
+
+    .btn {
+        padding: 12px 20px; /* Áreas de toque más grandes para dedos */
+        font-size: 1rem;
+    }
+
+    /* Ajuste de seguridad para el QR en pantallas pequeñas */
+    .qr-code:hover {
+        /* Evitamos que al crecer se salga de la pantalla en móviles */
+        transform: scale(1.4); 
+    }
+}

@@ -4,20 +4,25 @@
 
 /* 1. VARIABLES GLOBALES */
 :root {
+    /* Colores Principales */
     --color-primario: #0f172a;       /* Azul marino oscuro */
     --color-secundario: #0284c7;     /* Azul institucional */
     --color-acento: #0ea5e9;         /* Celeste brillante */
     
+    /* Colores de Fondo y Texto */
     --bg-principal: #f8fafc;         /* Gris casi blanco */
     --bg-tarjetas: #ffffff;          /* Blanco puro */
     --texto-oscuro: #1e293b;         /* Gris oscuro */
     --texto-mutado: #64748b;         /* Gris medio */
     
-    --color-preview: #6c757d;
-    --color-genially: #ff4a6b;       /* Rosa Genially / Acento secundario */
-    --color-pdf: #ef4444;
-    --color-video: #22c55e;
+    /* Colores de Estado y Recurso */
+    --color-preview: #6c757d;        /* Gris neutro */
+    --color-genially: #ff4a6b;       /* Rosa Genially */
+    --color-pdf: #ef4444;            /* Rojo PDF */
+    --color-video: #22c55e;          /* Verde Video */
+    --color-boton-alt: #ff9800;       /* Naranja acento */
 
+    /* Tipografía, Efectos y Espaciados */
     --fuente-principal: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
     --border-radius: 12px;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
@@ -51,17 +56,7 @@ body {
     padding: 40px 0;
 }
 
-/* Top Banner Promocional/Informativo */
-.top-banner {
-    background: #0066cc;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px 15px;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-/* 3. TIPOGRAFÍA Y TEXTOS */
+/* 3. TIPOGRAFÍA REUTILIZABLE */
 h1, h2, h3, h4 {
     color: var(--color-primario);
     font-weight: 700;
@@ -90,7 +85,7 @@ p {
 
 .section-title {
     font-size: 2.2rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .section-description {
@@ -119,9 +114,10 @@ p {
 
 .main-header .logo {
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
 .main-header .logo-accent {
@@ -130,7 +126,7 @@ p {
 
 .nav-menu {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .nav-link {
@@ -148,16 +144,58 @@ p {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* 5. HERO SECTION */
-.hero {
-    background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
-                url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da") center/cover no-repeat;
+/* 5. BANNERS INFORMATIVOS */
+.banner, .top-banner {
+    background: var(--color-secundario);
     color: #ffffff;
-    padding: 120px 20px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
     text-align: center;
 }
 
-.hero-content {
+.info-banner {
+    background: linear-gradient(90deg, var(--color-secundario), var(--color-acento));
+    color: #ffffff;
+    padding: 40px 20px;
+}
+
+.banner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.banner-text h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.banner-text p {
+    color: #e0f2fe;
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+
+/* 6. HERO SECTION */
+.hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+                url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da") center/cover no-repeat;
+    color: #ffffff;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-content, .contenido {
     max-width: 800px;
     margin: 0 auto;
 }
@@ -177,15 +215,16 @@ p {
 
 .hero h1 {
     color: #ffffff;
-    font-size: 3rem;
+    font-size: 3.2rem;
     line-height: 1.2;
     margin-bottom: 20px;
 }
 
 .hero p {
     color: #cbd5e1;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     margin-bottom: 35px;
+    line-height: 1.7;
 }
 
 .hero-actions {
@@ -195,7 +234,7 @@ p {
     flex-wrap: wrap;
 }
 
-/* 6. BOTONES */
+/* 7. BOTONES Y COMPONENTES INTERACTIVOS */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -209,58 +248,48 @@ p {
     border-radius: var(--border-radius);
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
     transition: var(--transition);
-}
-
-.btn-primary {
-    background-color: var(--color-secundario);
+    background-color: var(--color-boton-alt);
     color: #ffffff;
 }
 
-.btn-primary:hover {
-    background-color: var(--color-acento);
+.btn:hover {
+    background-color: #e68900;
 }
 
-.btn-secondary {
-    background-color: var(--color-genially);
-    color: #ffffff;
-}
+.btn-primary { background-color: var(--color-secundario); color: #ffffff; }
+.btn-primary:hover { background-color: var(--color-acento); }
 
-.btn-secondary:hover {
-    background-color: #e03f5c;
-}
+.btn-secondary { background-color: var(--color-genially); color: #ffffff; }
+.btn-secondary:hover { background-color: #e03f5c; }
+
+.btn-preview { background-color: var(--color-preview); color: #ffffff; }
+.btn-preview:hover { background-color: #495057; }
+
+.btn-genially { background-color: var(--color-genially); color: #ffffff; }
+.btn-genially:hover { background-color: #e03f5c; }
+
+.btn-pdf { background-color: var(--color-pdf); color: #ffffff; }
+.btn-pdf:hover { background-color: #dc2626; }
+
+.btn-video { background-color: var(--color-video); color: #ffffff; }
+.btn-video:hover { background-color: #16a34a; }
 
 .btn-outline {
     background: transparent;
     color: #ffffff;
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
+.btn-outline:hover { background: #ffffff; color: var(--color-primario); }
 
-.btn-outline:hover {
-    background: #ffffff;
-    color: var(--color-primario);
-}
+.btn-white { background-color: #ffffff; color: var(--color-secundario); }
+.btn-white:hover { background-color: #f1f5f9; transform: translateY(-2px); }
 
-.btn-white {
-    background-color: #ffffff;
-    color: var(--color-secundario);
-}
+.btn-lg { padding: 14px 28px; font-size: 1.05rem; }
+.btn-full { width: 100%; grid-column: span 2; }
 
-.btn-white:hover {
-    background-color: #f1f5f9;
-    transform: translateY(-2px);
-}
-
-.btn-lg {
-    padding: 14px 28px;
-    font-size: 1.05rem;
-}
-
-.btn-full {
-    width: 100%;
-}
-
-/* 7. GRIDS Y LAYOUTS */
+/* 8. GRIDS Y ESTRUCTURAS */
 .grid-2-cols {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -280,10 +309,92 @@ p {
     gap: 30px;
 }
 
-/* 8. TARJETAS DE GRADO */
-.grades-section {
-    padding: 80px 0;
+/* 9. TARJETAS DE REVISTAS Y RECURSOS */
+.magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+.card {
+    background: var(--bg-tarjetas);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+    position: relative;
+    height: 220px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.qr-code {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.qr-code:hover {
+    transform: scale(1.6);
+    transform-origin: top right;
+    z-index: 10;
+}
+
+.card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+    color: var(--color-primario);
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: var(--texto-mutado);
+    line-height: 1.5;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.btn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* 10. GRADOS ACADÉMICOS */
+.grades-section { padding: 80px 0; }
 
 .grade-card {
     background-color: var(--bg-tarjetas);
@@ -317,49 +428,25 @@ p {
     align-items: center;
     justify-content: center;
     margin-bottom: 25px;
+    box-shadow: var(--shadow-sm);
 }
 
 .bg-primero { background-color: var(--color-secundario); }
 .bg-segundo { background-color: var(--color-genially); }
 
-/* 9. BANNER INFORMATIVO */
-.info-banner {
-    background: linear-gradient(90deg, var(--color-secundario), var(--color-acento));
-    color: #ffffff;
-    padding: 40px 20px;
-}
+/* 11. PRESENTACIÓN / NOSOTROS */
+.presentation { padding: 80px 0; }
 
-.banner-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.presentation-visual {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.banner-text h2 {
-    color: #ffffff;
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-}
-
-.banner-text p {
-    color: #e0f2fe;
-    margin-bottom: 0;
-}
-
-/* 10. PRESENTACIÓN */
-.presentation {
-    padding: 80px 0;
+    justify-content: center;
 }
 
 .abstract-card {
     background: linear-gradient(135deg, #38bdf8, #0369a1);
     width: 100%;
     max-width: 400px;
-    height: 280px;
+    height: 300px;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
@@ -367,7 +454,6 @@ p {
     align-items: flex-end;
     padding: 30px;
     box-shadow: var(--shadow-lg);
-    margin: 0 auto;
 }
 
 .circle-decor {
@@ -385,13 +471,25 @@ p {
     z-index: 2;
 }
 
-.abstract-content h3 { color: #ffffff; }
-.abstract-content p { color: #e0f2fe; margin-bottom: 0; }
+.abstract-content h3 { color: #ffffff; margin-bottom: 10px; }
+.abstract-content p { color: #e0f2fe; font-size: 0.95rem; margin-bottom: 0; }
 
-/* 11. OBJETIVOS */
-.objectives-section {
+/* 12. SECCIÓN DE OBJETIVOS */
+.objetivos, .objectives-section {
     background-color: #f1f5f9;
-    padding: 80px 0;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.objetivos ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.objetivos li {
+    margin: 12px 0;
+    font-size: 1.1rem;
+    color: var(--texto-oscuro);
 }
 
 .objective-card {
@@ -410,19 +508,40 @@ p {
 
 .obj-icon {
     color: var(--color-secundario);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    display: inline-block;
 }
 
-.obj-icon .material-icons {
-    font-size: 40px;
-}
-
-/* 12. ESTADÍSTICAS */
-.stats-section {
+/* 13. SECCIÓN DE ESTADÍSTICAS */
+.estadisticas, .stats-section {
     background-color: var(--color-primario);
     color: #ffffff;
-    padding: 60px 0;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
     text-align: center;
+}
+
+.estadisticas .card {
+    background: var(--color-secundario);
+    color: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    width: 200px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.estadisticas .card h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.estadisticas .card p {
+    color: #e0f2fe;
+    margin-bottom: 0;
 }
 
 .stat-item {
@@ -440,15 +559,22 @@ p {
 
 .stat-label {
     color: #94a3b8;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 
-/* 13. FOOTER */
-.main-footer {
+/* 14. FOOTER */
+footer, .main-footer {
     background-color: #0b0f19;
     color: #94a3b8;
     padding: 60px 0 20px;
+    text-align: center;
+}
+
+footer p, .main-footer p {
+    color: #cbd5e1;
+    margin-bottom: 0;
+    font-size: 0.95rem;
 }
 
 .footer-container {
@@ -460,6 +586,7 @@ p {
     gap: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid #1e293b;
+    text-align: left;
 }
 
 .footer-brand h3, .footer-links h4, .footer-contact h4 {
@@ -486,15 +613,23 @@ p {
     font-size: 0.85rem;
 }
 
-/* 14. RESPONSIVO */
+/* 15. RESPONSIVO */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
         gap: 15px;
     }
-    .hero h1 { font-size: 2.2rem; }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+
     .banner-container {
         text-align: center;
         justify-content: center;
+    }
+
+    .btn-group {
+        grid-template-columns: 1fr;
     }
 }
